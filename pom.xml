@@ -16,6 +16,8 @@
     	<mule.tools.version>1.2</mule.tools.version>
 	<munit.version>1.3.6</munit.version>
     <mule.munit.support.version>3.9.0</mule.munit.support.version>
+    <uid>Aditi_ofc</uid>
+    <pwd>Rest@1993</pwd>
     </properties>
 
 	<build>
@@ -78,7 +80,39 @@
                     </coverage>
                 </configuration>
             </plugin>
+        
+        <plugin>
+    <groupId>org.mule.tools.maven</groupId>
+    <artifactId>mule-maven-plugin</artifactId>
+    <version>2.0</version>
+    <configuration>
+        <deploymentType>cloudhub</deploymentType>
+        <muleVersion>${mule.version}</muleVersion>
+        <username>${uid}</username>
+        <password>${pwd}</password>
+	      <workerType>Micro</workerType>
+        <redeploy>true</redeploy>
+        <environment>Sandbox</environment>
+    </configuration>
+    <executions>
+        <execution>
+            <id>deploy</id>
+            <phase>deploy</phase>
+            <goals>
+                <goal>deploy</goal>
+            </goals>
+        </execution>
+    </executions>
+</plugin>
+
+
+
+        
         </plugins>
+        
+        
+        
+        
 	<testResources>
             <testResource>
                 <directory>src/test/munit</directory>
